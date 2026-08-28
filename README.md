@@ -1,201 +1,71 @@
-# JP Minimal
+# JP Moda Minimalista 🛍️
 
-Loja virtual de **portfólio** — e-commerce de moda minimalista em arquitetura distribuída.
+Um e-commerce completo (Full-Stack) focado em moda minimalista, construído do zero com foco em performance, escalabilidade e boas práticas de desenvolvimento corporativo.
 
-Pagamentos, estoque e pedidos são **simulados**. Nenhuma cobrança real é feita.
+## 🚀 Acesse o Projeto Online
+- **Frontend Principal (Vercel):** [https://jp-moda-minimalista.vercel.app](https://jp-moda-minimalista.vercel.app)
+- **Frontend Alternativo (Netlify):** [https://lojaroupasjpminimalista.netlify.app](https://lojaroupasjpminimalista.netlify.app)
+- **Backend API (Render):** Cloud-hosted (Protegido por políticas de segurança CORS)
 
-```
-┌──────────────┐      /api/*       ┌──────────────┐      ┌────────────────┐
-│  Frontend    │  ───────────────▶ │  API REST    │ ───▶ │  MongoDB Atlas │
-│  Vercel ou   │   rewrite Next    │  Render      │      │  catálogo,     │
-│  Netlify     │                   │  Express     │      │  users, pedidos│
-│  Next.js 16  │                   │  Node 20     │      │                │
-└──────────────┘                   └──────────────┘      └────────────────┘
-```
+## 💻 Tecnologias e Ferramentas
 
-O frontend **não** fala com o banco. Server Components e o browser chamam a API. No cliente, `/api/*` é reescrito pelo Next.js para o host da API (mesmo origin, sem CORS no browser).
+A arquitetura do projeto foi desenhada utilizando um ecossistema moderno e amplamente utilizado pelo mercado:
 
-## Stack
+### Frontend (User Interface)
+- **Core:** Next.js (App Router) & React
+- **Linguagem:** TypeScript
+- **Deploy & CI/CD:** Vercel e Netlify (Configuração de Alta Disponibilidade)
 
-| Camada | Tecnologia | Onde publica |
-|---|---|---|
-| Frontend | Next.js 16, React 19, Tailwind CSS 4 | [Vercel](https://vercel.com) ou [Netlify](https://netlify.com) |
-| API | Express + TypeScript | [Render](https://render.com) |
-| Banco | MongoDB (Mongoose) | [MongoDB Atlas](https://www.mongodb.com/atlas) (free) |
-| Auth | HMAC + scrypt (Bearer token) | API |
-| Visual | Emojis no lugar de fotos de produto | — |
+### Backend (Business Logic & API)
+- **Ambiente:** Node.js (v20+)
+- **API:** Express / Padrão RESTful
+- **Linguagem:** TypeScript
+- **Deploy & CI/CD:** Render.com (Web Services)
 
-## O que a loja cobre
+### Infraestrutura de Dados
+- **Database:** MongoDB (NoSQL)
+- **Hospedagem de Dados:** MongoDB Atlas (DBaaS)
+- **Seed:** Scripts automatizados para popular a base de dados com mock data (catálogo de roupas).
 
-- Home, catálogo com filtros, PDP, busca com autocomplete
-- Carrinho e favoritos (`localStorage`)
-- Cadastro / login
-- Checkout simulado (Pix, cartão, boleto, retirada)
-- Pedidos persistidos no Mongo com baixa de estoque
-- Páginas institucionais e conta
-- Layout responsivo (desktop e celular)
+## 🏗️ Arquitetura e Segurança (Destaques)
+- **Desacoplamento:** O frontend (Next.js) e o backend (Node.js/Express) operam em repositórios independentes, permitindo que cada serviço escale de forma isolada e tenha seu próprio fluxo de deploy.
+- **Segurança Restritiva (CORS):** A comunicação com a API backend no Render está blindada via variáveis de ambiente (`FRONTEND_ORIGIN`). O servidor aceita estritamente requisições originadas dos domínios oficiais (Vercel/Netlify), rejeitando tentativas de conexão externas não autorizadas.
+- **CI/CD Automatizado:** Fluxo de *Continuous Integration* e *Continuous Deployment* integrado ao GitHub. Qualquer `push` validado na branch `main` dispara o *build* e *deploy* simultâneos nos três provedores (Render, Vercel e Netlify) sem intervenção manual.
+- **Gestão de Segredos:** Todo dado sensível (Strings de conexão do MongoDB, links de API, tokens) é gerenciado via arquivos `.env` localmente e injetado via Painel de Controle de Variáveis de Ambiente nos servidores em nuvem, garantindo que credenciais não subam para o controle de versão (Git).
 
-Peças são representadas por emojis (não há fotos). O seed gera **72 itens em 12 categorias** — volume adequado a uma loja simulada no Atlas gratuito.
+## ⚙️ Como Rodar o Projeto Localmente
 
-Conta demo após o seed: `demo@jpstore.com.br` / `demo1234`.
+Para rodar o projeto na sua máquina, você precisará do [Node.js](https://nodejs.org/) (versão 20+) e do [Git](https://git-scm.com/) instalados.
 
-## Requisitos
-
-- Node.js **20+**
-- Conta no [MongoDB Atlas](https://www.mongodb.com/atlas)
-- Conta no [Render](https://render.com) (API)
-- Conta na [Vercel](https://vercel.com) **ou** [Netlify](https://www.netlify.com) (frontend)
-- Repositório Git (GitHub) para conectar os deploys
-
-## Rodar local
-
-### 1. API
-
+### 1. Clonando o Repositório
 ```bash
+git clone https://github.com/joaop-gregorioDS/jp-moda-minimalista.git
+cd jp-moda-minimalista
+```
+
+### 2. Subindo o Backend (API)
+```bash
+# Entre na pasta do backend
 cd backend
-copy .env.example .env
-# edite MONGODB_URI e APP_SECRET
+
+# Instale as dependências
 npm install
-npm run seed
-npm run dev
 ```
+* **Configuração:** Crie um arquivo `.env` dentro da pasta `backend/` seguindo o modelo que houver (ou solicite as credenciais do MongoDB Atlas).
+* **Banco de dados:** Para popular o catálogo inicial de produtos, rode: `npm run seed`
+* **Inicie a API:** `npm run dev` (O servidor iniciará na porta `4000`)
 
-API em `http://localhost:4000` · health em `/api/health`.
-
-O seed **apaga** categorias, produtos, usuários e pedidos da base apontada em `MONGODB_URI` e recria o catálogo. Rode só quando quiser popular (ou resetar) o banco.
-
-### 2. Frontend
-
-Na raiz do repositório:
-
+### 3. Subindo o Frontend
+Abra um **novo terminal** e mantenha o backend rodando.
 ```bash
-copy .env.example .env.local
+# Na pasta raiz do projeto (fora da pasta backend)
 npm install
-npm run dev
 ```
+* **Configuração:** Crie um arquivo `.env` na raiz do projeto com a seguinte variável para que o frontend encontre sua API local:
+`NEXT_PUBLIC_API_URL=http://localhost:4000`
+* **Inicie o Frontend:** `npm run dev`
 
-Loja em `http://localhost:3000`.
+Agora, basta acessar **http://localhost:3000** no seu navegador!
 
-Em dois terminais: `npm run dev:api` e `npm run dev:web`.
-
-### Celular na mesma rede
-
-O `next dev` escuta em `0.0.0.0:3000`. No telefone, abra `http://SEU_IP_LAN:3000` (ex.: `http://192.168.68.107:3000`), com a API rodando. Confirme que o IP da máquina está em `allowedDevOrigins` em `next.config.ts` — senão o JS do Next 16 não hidrata no dispositivo.
-
-## Variáveis de ambiente
-
-Arquivos `.env` **não** entram no Git. Use os `.env.example` como modelo.
-
-### Frontend (Vercel / Netlify / local)
-
-| Variável | Exemplo | Uso |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://seu-app.vercel.app` | URLs canônicas no site |
-| `NEXT_PUBLIC_API_URL` | `https://jp-store-api.onrender.com` | origem da API (build) |
-| `API_URL` | mesmo valor | fetch no servidor Next |
-| `NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD` | `299` | frete grátis a partir de |
-| `NEXT_PUBLIC_SHIPPING_FIXED` | `24.9` | frete fixo simulado |
-
-### API (Render / local)
-
-| Variável | Exemplo |
-|---|---|
-| `MONGODB_URI` | `mongodb+srv://USER:SENHA@cluster.mongodb.net/jp_store?retryWrites=true&w=majority` |
-| `APP_SECRET` | string longa e aleatória (não reutilize o exemplo) |
-| `FRONTEND_ORIGIN` | `https://seu-app.vercel.app` (várias URLs separadas por vírgula) |
-| `PORT` | injetada pelo Render; local = `4000` |
-
-No Atlas, em **Network Access**, libere `0.0.0.0/0` (ou os IPs de saída do Render). Sem isso a API não conecta.
-
-## Publicar (ordem)
-
-Faça nesta ordem: **Atlas → seed → Render → frontend → CORS**.
-
-### 1. MongoDB Atlas
-
-1. Crie um cluster **M0 (free)**.
-2. Database user + senha.
-3. Network Access: `0.0.0.0/0`.
-4. Copie a connection string para `MONGODB_URI` (database `jp_store`).
-5. Com o `.env` do `backend` apontando para o Atlas:
-
-```bash
-cd backend
-npm install
-npm run seed
-```
-
-### 2. API no Render
-
-1. Suba este repositório no GitHub.
-2. Render → **New → Web Service** → o repositório.
-3. Root Directory: `backend`.
-4. Build: `npm install && npm run build`
-5. Start: `npm start`
-6. Variáveis: `MONGODB_URI`, `APP_SECRET`, `FRONTEND_ORIGIN` (pode deixar a URL do frontend provisória e atualizar no passo 4).
-
-Ou use o Blueprint `render.yaml` na raiz.
-
-Health check: `https://SEU-SERVICO.onrender.com/api/health`.
-
-No plano free o Render **dorme** após inatividade. A primeira requisição pode levar ~30–50 s (cold start).
-
-### 3. Frontend na Vercel
-
-1. Importar o repositório (root = pasta do Next.js, não `backend`).
-2. Framework: Next.js (já em `vercel.json`).
-3. Variáveis: `API_URL`, `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_SITE_URL` (URL da API no Render + URL do próprio frontend).
-4. Deploy.
-
-### 4. Frontend na Netlify (alternativa)
-
-1. Build command: `npm run build` (`netlify.toml` já aponta o plugin Next.js).
-2. As mesmas variáveis da Vercel.
-
-### 5. Fechar o CORS
-
-Depois do primeiro deploy do frontend, coloque a URL real em `FRONTEND_ORIGIN` no Render (ex.: `https://jp-minimal.vercel.app`) e faça **redeploy** da API. Origens `*.vercel.app` e `*.netlify.app` também são aceitas pelo CORS da API.
-
-## API
-
-| Método | Rota | Auth |
-|---|---|---|
-| `GET` | `/api/health` | — |
-| `GET` | `/api/categories` | — |
-| `GET` | `/api/products` | — |
-| `GET` | `/api/products/search?q=` | — |
-| `GET` | `/api/products/featured` | — |
-| `GET` | `/api/products/latest` | — |
-| `GET` | `/api/products/:id` | — |
-| `POST` | `/api/auth/register` | — |
-| `POST` | `/api/auth/login` | — |
-| `GET` | `/api/auth/me` | Bearer |
-| `GET` | `/api/orders` | Bearer |
-| `POST` | `/api/orders` | opcional |
-
-## Estrutura
-
-```
-├── src/                      frontend Next.js (App Router)
-│   ├── app/                  páginas e layout
-│   ├── components/
-│   ├── contexts/             auth, sacola, favoritos, toasts
-│   └── lib/                  cliente HTTP da API
-├── backend/                  API Express + Mongo
-│   ├── src/index.ts
-│   ├── src/routes/
-│   ├── src/models/
-│   ├── src/seed.ts
-│   └── .env.example
-├── public/banners/           hero e mosaicos
-├── scripts/generate-banners.mjs
-├── .env.example              frontend
-├── render.yaml
-├── netlify.toml
-└── vercel.json
-```
-
-## Contato (portfólio)
-
-- E-mail: [joaop.gregorio@outlook.com](mailto:joaop.gregorio@outlook.com)
-- WhatsApp: [+55 (11) 98388-1984](https://wa.me/5511983881984)
+---
+*Desenvolvido por João Gregório.*
