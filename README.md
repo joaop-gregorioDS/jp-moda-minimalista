@@ -68,4 +68,14 @@ npm install
 Agora, basta acessar **http://localhost:3000** no seu navegador!
 
 ---
-*Desenvolvido por João Gregório.*
+
+## 📬 Contato
+
+Gostou do projeto ou quer bater um papo sobre tecnologia? Sinta-se à vontade para me contatar:
+
+- **E-mail:** [joaop.gregorio@outlook.com](mailto:joaop.gregorio@outlook.com)
+- **Telefone / WhatsApp:** [+55 11 98388-1984](https://wa.me/5511983881984)
+- **Repositório GitHub:** [https://github.com/joaop-gregorioDS/jp-moda-minimalista](https://github.com/joaop-gregorioDS/jp-moda-minimalista)
+
+---
+*Desenvolvido por **João Gregório**.*
