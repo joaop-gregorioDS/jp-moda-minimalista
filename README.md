@@ -14,7 +14,7 @@ A arquitetura do projeto foi desenhada utilizando um ecossistema moderno e ampla
 ### Frontend (User Interface)
 - **Core:** Next.js (App Router) & React
 - **Linguagem:** TypeScript
-- **Deploy & CI/CD:** Vercel e Netlify (Configuração de Alta Disponibilidade)
+- **Deploy & CI/CD:** Vercel e Netlify (Estratégia de Redundância Multi-platform)
 
 ### Backend (Business Logic & API)
 - **Ambiente:** Node.js (v20+)
