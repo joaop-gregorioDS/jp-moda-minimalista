@@ -28,7 +28,7 @@ A arquitetura do projeto foi desenhada utilizando um ecossistema moderno e ampla
 - **Seed:** Scripts automatizados para popular a base de dados com mock data (catálogo de roupas).
 
 ## 🏗️ Arquitetura e Segurança (Destaques)
-- **Desacoplamento:** O frontend (Next.js) e o backend (Node.js/Express) operam em repositórios independentes, permitindo que cada serviço escale de forma isolada e tenha seu próprio fluxo de deploy.
+- **Desacoplamento:** Frontend e backend são desacoplados em nível de aplicação e deployment, embora atualmente estejam organizados em um monorepo. Isso permite que cada serviço escale de forma isolada e tenha seu próprio fluxo de deploy.
 - **Segurança Restritiva (CORS):** A comunicação com a API backend no Render está blindada via variáveis de ambiente (`FRONTEND_ORIGIN`). O servidor aceita estritamente requisições originadas dos domínios oficiais (Vercel/Netlify), rejeitando tentativas de conexão externas não autorizadas.
 - **CI/CD Automatizado:** Fluxo de *Continuous Integration* e *Continuous Deployment* integrado ao GitHub. Qualquer `push` validado na branch `main` dispara o *build* e *deploy* simultâneos nos três provedores (Render, Vercel e Netlify) sem intervenção manual.
 - **Gestão de Segredos:** Todo dado sensível (Strings de conexão do MongoDB, links de API, tokens) é gerenciado via arquivos `.env` localmente e injetado via Painel de Controle de Variáveis de Ambiente nos servidores em nuvem, garantindo que credenciais não subam para o controle de versão (Git).
