@@ -1,0 +1,31 @@
+{
+  "product": {
+    "id": 23,
+    "slug": "bermuda-chino-nylon-base-1",
+    "sku": "JP-BRM-0001",
+    "name": "Bermuda Chino Nylon \u2014 Base",
+    "description": "Bermuda Chino Nylon \u2014 Base da cole\u00e7\u00e3o Bermudas. Pe\u00e7a em tecido de alta qualidade, corte pensado para o corpo e acabamento premium.",
+    "price": 140.58,
+    "compareAtPrice": null,
+    "categoryId": 4,
+    "categoryName": "Bermudas",
+    "categorySlug": "bermudas",
+    "stock": 13,
+    "featured": true,
+    "sizes": [
+      "PP",
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "visual": "shorts-chino",
+    "colors": [
+      {
+        "name": "Oliva",
+        "hex": "#6f715c"
+      }
+    ],
+    "discountPct": null
+  }
+}

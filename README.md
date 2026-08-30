@@ -1,81 +1,83 @@
-# JP Moda Minimalista 🛍️
+# JP Moda Minimalista - Ecossistema Completo 🛍️
 
-Um e-commerce completo (Full-Stack) focado em moda minimalista, construído do zero com foco em performance, escalabilidade e boas práticas de desenvolvimento corporativo.
+Este repositório abriga o ecossistema completo da **JP Minimal**, uma loja virtual de demonstração (portfólio) focada em uma experiência minimalista. O projeto é composto por um Backend centralizado que serve a três clientes diferentes: Web, Android e iOS.
 
-## 🚀 Acesse o Projeto Online
-- **Frontend Principal (Vercel):** [https://jp-moda-minimalista.vercel.app](https://jp-moda-minimalista.vercel.app)
-- **Frontend Alternativo (Netlify):** [https://lojaroupasjpminimalista.netlify.app](https://lojaroupasjpminimalista.netlify.app)
-- **Backend API (Render):** Cloud-hosted (Protegido por políticas de segurança CORS)
+*Nota: Este é um projeto de portfólio. As compras, pagamentos e estoques são **simulados**.*
 
-## 💻 Tecnologias e Ferramentas
+## 📸 Demonstração nas 3 Plataformas
 
-A arquitetura do projeto foi desenhada utilizando um ecossistema moderno e amplamente utilizado pelo mercado:
+Abaixo, veja a coerência visual e o Design System do projeto rodando nas três plataformas consumindo a mesma API.
 
-### Frontend (User Interface)
-- **Core:** Next.js (App Router) & React
-- **Linguagem:** TypeScript
-- **Deploy & CI/CD:** Vercel e Netlify (Estratégia de Redundância Multi-platform)
+### 🏠 Tela Inicial (Home)
+| 🌐 Web (Next.js) | 🤖 Android (Compose) | 🍎 iOS (SwiftUI) |
+|:---:|:---:|:---:|
+| <img src="./docs/Web%20Home.png" width="400"/> | <img src="./docs/Android%20Home.png" width="220"/> | <img src="./docs/IOS%20Home.PNG" width="220"/> |
 
-### Backend (Business Logic & API)
-- **Ambiente:** Node.js (v20+)
-- **API:** Express / Padrão RESTful
-- **Linguagem:** TypeScript
-- **Deploy & CI/CD:** Render.com (Web Services)
+### 🛍️ Catálogo / Produto
+| 🌐 Web (Produto) | 🤖 Android (Catálogo) | 🍎 iOS (Catálogo) |
+|:---:|:---:|:---:|
+| <img src="./docs/Web%20produto.png" width="400"/> | <img src="./docs/Android%20Catalogo.png" width="220"/> | <img src="./docs/IOS%20catalogo.PNG" width="220"/> |
 
-### Infraestrutura de Dados
-- **Database:** MongoDB (NoSQL)
-- **Hospedagem de Dados:** MongoDB Atlas (DBaaS)
-- **Seed:** Scripts automatizados para popular a base de dados com mock data (catálogo de roupas).
+### 🛒 Sacola / Carrinho
+| 🌐 Web (Carrinho) | 🤖 Android (Sacola) | 🍎 iOS (Sacola) |
+|:---:|:---:|:---:|
+| <img src="./docs/Web%20carrinho.png" width="400"/> | <img src="./docs/Android%20sacola.png" width="220"/> | <img src="./docs/IOS%20Sacola.PNG" width="220"/> |
 
-## 🏗️ Arquitetura e Segurança (Destaques)
-- **Desacoplamento:** O frontend (Next.js) e o backend (Node.js/Express) operam em repositórios independentes, permitindo que cada serviço escale de forma isolada e tenha seu próprio fluxo de deploy.
-- **Segurança Restritiva (CORS):** A comunicação com a API backend no Render está blindada via variáveis de ambiente (`FRONTEND_ORIGIN`). O servidor aceita estritamente requisições originadas dos domínios oficiais (Vercel/Netlify), rejeitando tentativas de conexão externas não autorizadas.
-- **CI/CD Automatizado:** Fluxo de *Continuous Integration* e *Continuous Deployment* integrado ao GitHub. Qualquer `push` validado na branch `main` dispara o *build* e *deploy* simultâneos nos três provedores (Render, Vercel e Netlify) sem intervenção manual.
-- **Gestão de Segredos:** Todo dado sensível (Strings de conexão do MongoDB, links de API, tokens) é gerenciado via arquivos `.env` localmente e injetado via Painel de Controle de Variáveis de Ambiente nos servidores em nuvem, garantindo que credenciais não subam para o controle de versão (Git).
+## 🏗️ Arquitetura do Projeto (Monorepo)
 
-## ⚙️ Como Rodar o Projeto Localmente
+O projeto está dividido em três frentes principais:
 
-Para rodar o projeto na sua máquina, você precisará do [Node.js](https://nodejs.org/) (versão 20+) e do [Git](https://git-scm.com/) instalados.
+- 🌐 **[Web / API](./Roupas%20Lojas)**: Frontend construído com **Next.js** e Backend com **Node.js/Express** + **MongoDB Atlas**. A API gerencia os produtos, usuários e pedidos para todos os clientes. (Hospedado no Render / Vercel).
+- 🤖 **[Android](./jp-minimal-android)**: Aplicativo nativo construído com **Kotlin** e **Jetpack Compose**. (Finalizado e testado).
+- 🍎 **[iOS](./jp-minimal-ios)**: Aplicativo nativo construído com **Swift** e **SwiftUI** (iOS 17+).
 
-### 1. Clonando o Repositório
+## 🚀 Tecnologias Utilizadas
+
+### Backend e Web (Roupas Lojas)
+- **Frameworks:** Next.js, React, Express
+- **Banco de Dados:** MongoDB Atlas
+- **Deploy:** Render (API) e Vercel (Frontend Web)
+
+### Android
+- **Linguagem:** Kotlin
+- **UI:** Jetpack Compose
+- **Arquitetura:** MVVM, Coroutines, Retrofit/Ktor, DataStore local.
+
+### iOS
+- **Linguagem:** Swift 5.10+
+- **UI:** SwiftUI (iOS 17+)
+- **Gerenciamento:** URLSession (async/await), Keychain para tokens, UserDefaults.
+
+## 🛠️ Como rodar o projeto localmente
+
+### 1. Backend e Web
+Navegue até a pasta `Roupas Lojas`. Crie um arquivo `.env.local` baseado no `.env.example` com sua string do MongoDB.
 ```bash
-git clone https://github.com/joaop-gregorioDS/jp-moda-minimalista.git
-cd jp-moda-minimalista
-```
-
-### 2. Subindo o Backend (API)
-```bash
-# Entre na pasta do backend
-cd backend
-
-# Instale as dependências
+cd "Roupas Lojas"
 npm install
+npm run dev
 ```
-* **Configuração:** Crie um arquivo `.env` dentro da pasta `backend/` seguindo o modelo que houver (ou solicite as credenciais do MongoDB Atlas).
-* **Banco de dados:** Para popular o catálogo inicial de produtos, rode: `npm run seed`
-* **Inicie a API:** `npm run dev` (O servidor iniciará na porta `4000`)
+*(O frontend e a API subirão juntos no ambiente local).*
 
-### 3. Subindo o Frontend
-Abra um **novo terminal** e mantenha o backend rodando.
+### 2. Android
+Abra a pasta `jp-minimal-android` no **Android Studio**. Aguarde a sincronização do Gradle e execute em um emulador.
+*(A URL da API pode ser alterada no arquivo `ApiService.kt` ou variáveis de build, caso queira apontar para localhost).*
+
+### 3. iOS
+Navegue até a pasta `jp-minimal-ios` e abra no **Xcode** (em um Mac).
 ```bash
-# Na pasta raiz do projeto (fora da pasta backend)
-npm install
+cd jp-minimal-ios
+open JPMinimal.xcodeproj
 ```
-* **Configuração:** Crie um arquivo `.env` na raiz do projeto com a seguinte variável para que o frontend encontre sua API local:
-`NEXT_PUBLIC_API_URL=http://localhost:4000`
-* **Inicie o Frontend:** `npm run dev`
+Selecione o simulador e rode (Cmd + R). A URL da API está configurada em `Config/Production.xcconfig`.
 
-Agora, basta acessar **http://localhost:3000** no seu navegador!
+## 💡 Destaques e Soluções
+- **Cold Start do Servidor:** Como o backend usa o plano gratuito do Render, os aplicativos Mobile foram programados para informar ao usuário que o servidor está "acordando" caso haja demora na primeira requisição.
+- **Ecossistema Único:** O uso do mesmo banco de dados (MongoDB) e API garante que os produtos e carrinho reflitam de maneira lógica a comunicação multi-plataforma.
+- **Design System Coeso:** As mesmas paletas de cores (Ink, Paper, Sand, Gold) e regras visuais foram respeitadas em Kotlin e Swift sem depender de bibliotecas externas complexas.
 
----
-
-## 📬 Contato
-
-Gostou do projeto ou quer bater um papo sobre tecnologia? Sinta-se à vontade para me contatar:
-
-- **E-mail:** [joaop.gregorio@outlook.com](mailto:joaop.gregorio@outlook.com)
-- **Telefone / WhatsApp:** [+55 11 98388-1984](https://wa.me/5511983881984)
-- **Repositório GitHub:** [https://github.com/joaop-gregorioDS/jp-moda-minimalista](https://github.com/joaop-gregorioDS/jp-moda-minimalista)
-
----
-*Desenvolvido por **João Gregório**.*
+## 📱 Contato
+- **Desenvolvedor:** João Paulo Gregorio
+- **E-mail:** joaop.gregorio@outlook.com
+- **WhatsApp:** +55 (11) 98388-1984
+- **GitHub:** [joaop-gregorioDS](https://github.com/joaop-gregorioDS)

@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": 23,
+      "slug": "bermuda-chino-nylon-base-1",
+      "name": "Bermuda Chino Nylon \u2014 Base",
+      "price": 140.58,
+      "compareAtPrice": null,
+      "discountPct": null,
+      "visual": "shorts-chino",
+      "colorHex": "#6f715c",
+      "categoryName": "Bermudas",
+      "categorySlug": "bermudas",
+      "inStock": true,
+      "sizes": [
+        "PP",
+        "P",
+        "M",
+        "G",
+        "GG"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "camiseta-basica-algodao-pima-3",
+      "name": "Camiseta B\u00e1sica Algod\u00e3o Pima",
+      "price": 91.24,
+      "compareAtPrice": 128.35,
+      "discountPct": 29,
+      "visual": "tee-long",
+      "colorHex": "#111111",
+      "categoryName": "Camisetas",
+      "categorySlug": "camisetas",
+      "inStock": true,
+      "sizes": [
+        "PP",
+        "P",
+        "M"
+      ]
+    }
+  ]
+}

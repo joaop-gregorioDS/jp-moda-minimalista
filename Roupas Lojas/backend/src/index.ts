@@ -56,8 +56,8 @@ async function main() {
     res.status(500).json({ error: "Erro interno." });
   });
 
-  app.listen(config.port, () => {
-    console.log(`JP Store API ouvindo na porta ${config.port}`);
+  app.listen(config.port, "0.0.0.0", () => {
+    console.log(`JP Store API ouvindo em 0.0.0.0:${config.port} (emulador 10.0.2.2 e celular na Wi-Fi)`);
   });
 }
 
