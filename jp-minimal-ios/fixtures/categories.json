@@ -1,0 +1,100 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "slug": "camisetas",
+      "name": "Camisetas",
+      "description": "B\u00e1sicos perfeitos em algod\u00e3o de alta fia\u00e7\u00e3o.",
+      "accent": "#c6a87c",
+      "sortOrder": 0
+    },
+    {
+      "id": 2,
+      "slug": "camisas",
+      "name": "Camisas",
+      "description": "Camisas estruturadas de alfaiataria casual.",
+      "accent": "#8f8b84",
+      "sortOrder": 1
+    },
+    {
+      "id": 3,
+      "slug": "calcas",
+      "name": "Cal\u00e7as",
+      "description": "Cal\u00e7as de corte limpo para o dia a dia.",
+      "accent": "#5d6b7a",
+      "sortOrder": 2
+    },
+    {
+      "id": 4,
+      "slug": "bermudas",
+      "name": "Bermudas",
+      "description": "Bermudas leves para dias de calor.",
+      "accent": "#8f8b84",
+      "sortOrder": 3
+    },
+    {
+      "id": 5,
+      "slug": "jaquetas",
+      "name": "Jaquetas",
+      "description": "Jaquetas de meia esta\u00e7\u00e3o com cara de eterna.",
+      "accent": "#6f715c",
+      "sortOrder": 4
+    },
+    {
+      "id": 6,
+      "slug": "sueteres",
+      "name": "Su\u00e9teres & Tric\u00f4",
+      "description": "Malhas quentes, atemporais e elegantes.",
+      "accent": "#a88758",
+      "sortOrder": 5
+    },
+    {
+      "id": 7,
+      "slug": "blazers",
+      "name": "Blazers",
+      "description": "Blazers de alfaiataria com humor minimalista.",
+      "accent": "#1e2a3a",
+      "sortOrder": 6
+    },
+    {
+      "id": 8,
+      "slug": "vestidos",
+      "name": "Vestidos",
+      "description": "Vestidos longos e estruturas fluidas.",
+      "accent": "#5e2b38",
+      "sortOrder": 7
+    },
+    {
+      "id": 9,
+      "slug": "saias",
+      "name": "Saias",
+      "description": "Saia de moleza e alfaiataria.",
+      "accent": "#c4a87c",
+      "sortOrder": 8
+    },
+    {
+      "id": 10,
+      "slug": "casacos",
+      "name": "Casacos",
+      "description": "Casacos pesados para o inverno urbano.",
+      "accent": "#111111",
+      "sortOrder": 9
+    },
+    {
+      "id": 11,
+      "slug": "acessorios",
+      "name": "Acess\u00f3rios",
+      "description": "Bolsas, cintos, bon\u00e9s e c\u00f3digos premium.",
+      "accent": "#c6a87c",
+      "sortOrder": 10
+    },
+    {
+      "id": 12,
+      "slug": "calcados",
+      "name": "Cal\u00e7ados",
+      "description": "Cal\u00e7ados premium, do loafer ao t\u00eanis.",
+      "accent": "#5d6b7a",
+      "sortOrder": 11
+    }
+  ]
+}

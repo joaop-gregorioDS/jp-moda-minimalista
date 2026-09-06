@@ -1,0 +1,6 @@
+// `//` starts a comment in xcconfig — split the URL with `$()`.
+API_BASE_URL = https:/$()/jp-moda-minimalista.onrender.com
+PRODUCT_BUNDLE_IDENTIFIER = br.com.jpminimal
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+IPHONEOS_DEPLOYMENT_TARGET = 17.0

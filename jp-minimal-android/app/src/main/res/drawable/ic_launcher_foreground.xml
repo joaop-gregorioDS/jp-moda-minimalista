@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Compact JP, centered in the adaptive-icon safe zone (inner ~66dp). -->
+    <path
+        android:fillColor="#C6A87C"
+        android:pathData="M44,34h8v30c0,7-5.5,11-14,11h-4v-7h4c5,0,8,-2,8,-4V34z" />
+    <path
+        android:fillColor="#C6A87C"
+        android:fillType="evenOdd"
+        android:pathData="M56,34h16c8,0,13,6,13,12.5S80,59,72,59H64v15h-8V34zM64,41h8c3.8,0,6.5,2.6,6.5,5.5S75.8,52,72,52H64V41z" />
+</vector>

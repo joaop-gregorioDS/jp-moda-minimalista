@@ -1,0 +1,9 @@
+{
+  "token": "<redacted>",
+  "user": {
+    "id": 1,
+    "name": "Cliente Demo",
+    "email": "demo@jpstore.com.br",
+    "phone": "(11) 99999-0000"
+  }
+}

@@ -1,0 +1,19 @@
+# Segurança: Evitar vazamento de chaves
+.env
+.env.local
+.env.development
+.env.production
+*.pem
+*.keystore
+*.jks
+keystore.properties
+local.properties
+
+# Pastas de IDE e SO
+.idea/
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dependências temporárias (caso suba algo acidentalmente na raiz)
+node_modules/
