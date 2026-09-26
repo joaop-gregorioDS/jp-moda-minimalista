@@ -2,7 +2,7 @@
 
 Loja virtual de moda de **demonstração**, com o mesmo catálogo no web, Android e iOS.
 
-Pagamentos, estoque e frete são simulados. Não há cobrança real.
+Pagamentos, frete e entrega são simulados. O backend mantém catálogo e pedidos e atualiza o estoque de demonstração; não há integração de cobrança ou logística real.
 
 [Live](https://jp-moda-minimalista.vercel.app)
 
@@ -23,7 +23,7 @@ Pagamentos, estoque e frete são simulados. Não há cobrança real.
 
 **Caminho do avaliador:** início → produto → sacola → entrar → checkout simulado → pedidos.
 
-Rotas de conta e pedido exigem token. Sem autenticação, o checkout não grava pedido.
+O histórico exige token. A API aceita sessão opcional ao criar um pedido; a interface pode conduzir o avaliador pelo login, mas a rota não exige autenticação no servidor.
 
 ### Telas
 
@@ -40,7 +40,7 @@ Rotas de conta e pedido exigem token. Sem autenticação, o checkout não grava 
 | Real (grava na API) | Simulado |
 | :--- | :--- |
 | Cadastro, login, sessão | Pix, cartão, boleto |
-| Catálogo e busca | Estoque e logística |
+| Catálogo, busca, pedidos e atualização do estoque de demonstração | Frete, entrega e pagamento |
 | Sacola, favoritos, pedido | Nota fiscal |
 
 No plano gratuito a API pode dormir. A primeira chamada pode levar alguns segundos.
