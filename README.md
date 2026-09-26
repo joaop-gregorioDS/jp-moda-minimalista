@@ -6,6 +6,8 @@ Pagamentos, frete e entrega são simulados. O backend mantém catálogo e pedido
 
 [Live](https://jp-moda-minimalista.vercel.app)
 
+**Hospedagem:** aplicação web na Vercel, API no Render e banco de dados no MongoDB Atlas.
+
 ---
 
 ## Demonstração
